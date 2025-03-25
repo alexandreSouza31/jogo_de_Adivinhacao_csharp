@@ -55,7 +55,7 @@
 
                 Random geradorDeNumeros = new Random();
                 int numeroSorteado = geradorDeNumeros.Next(1, 21);
-                Console.WriteLine($"\n Gabarito: {numeroSorteado}");
+                //Console.WriteLine($"\n Gabarito: {numeroSorteado}");
                 string historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
 
                 Console.Write("Digite um número entre 1 e 20: ", " \n");
@@ -64,7 +64,7 @@
 
                 if (Array.Exists(numerosJaDigitados, n => n == numeroDigitadoInput.ToString()) & numeroDigitadoInput != numeroSorteado)
                 {
-                    Console.WriteLine($"\n{numeroDigitadoInput} já foi digitado é diferente do sorteado!", "\n");
+                    Console.WriteLine($"\n{numeroDigitadoInput} já foi digitado, e é diferente do sorteado!", "\n");
                     Console.Write("Digite [Enter] para continuar:");
                     Console.ReadLine();
                     continue;
@@ -94,7 +94,7 @@
                     Console.WriteLine("**************************************");
                     Console.WriteLine("        Jogo de Adivinhação", "\n");
                     Console.WriteLine($"\nNÍVEL: {nivelDificuldade}", "\n");
-                    Console.WriteLine($"HISTÓRICO DE CHUTES: {historicoChutesJoin}", "\t");
+                    Console.WriteLine($"HISTÓRICO DE CHUTES   : {historicoChutesJoin}", "\t");
                     Console.WriteLine($"HISTÓRICO DE SORTEADOS: {historicoSorteadosJoin}", "\t");
                     Console.WriteLine($"\nPONTUAÇÃO FINAL: {pontuacao}", "\n");
                     Console.WriteLine($"\nTENTATIVAS RESTANTES: {tentativas-1}", "\n");
@@ -144,7 +144,7 @@
                     Console.WriteLine("        Jogo de Adivinhação", "\n");
                     Console.WriteLine($"\nSuas tentativas acabaram! O número sorteado da última rodada foi {numeroSorteado}.");
                     Console.WriteLine($"\nNÍVEL: {nivelDificuldade}", "\n");
-                    Console.WriteLine($"HISTÓRICO DE CHUTES: {historicoChutesJoin}", "\t");
+                    Console.WriteLine($"HISTÓRICO DE CHUTES   : {historicoChutesJoin}", "\t");
                     Console.WriteLine($"HISTÓRICO DE SORTEADOS: {historicoSorteadosJoin}", "\t");
 
                     Console.WriteLine($"\nPONTUAÇÃO FINAL: {pontuacao}", "\n");
