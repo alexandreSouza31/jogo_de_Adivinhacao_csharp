@@ -6,19 +6,19 @@ Você também poderá escolher o nível de dificuldade do jogo, e isso lhe dará
 
 ## Sumário
 
-- [Visão geral](#visao-geral)
-  - [Mídia](#midia)
+- [Visão geral](#visão-geral)
+  - [Mídia](#mídia-)
   - [Funcionalidades](#funcionalidades)
-  - [Desenvolvido com](#desenvolvido-com)
-  - [Estrutura do projeto](#estrutura-do-projeto)
-- [Como rodar o código?](#como-rodar-o-codigo)
-  - [Passo a passo - Clone ou baixe o projeto](#passo-a-passo-clone-ou-baixe-o-projeto)
-  - [Uso](#uso)
-- [Autor](#autor)
+  - [Desenvolvido com](#desenvolvido-com-)
+  - [Estrutura do projeto](#estrutura-do-projeto-)
+- [Como rodar o código?](#como-rodar-o-código-)
+  - [Passo a passo - Clone ou baixe o projeto](#passo-a-passo---clone-ou-baixe-o-projeto--)
+  - [Uso](#uso-)
+- [Autor](#autor-)
 
 ## Visão geral
 
-### Mídia📷
+### Mídia 📷
 ##### GIF da aplicação - Clique no GIF para dar Play/Pause
 ![Image](https://imgur.com/vUeHijP.gif)
 
@@ -68,7 +68,7 @@ Você também poderá escolher o nível de dificuldade do jogo, e isso lhe dará
 
 #### ❗❗Obs: Há a necessidade de ter o .NET SDK instalado em sua máquina previamente!
 
-#### Passo a passo - Clone ou baixe o projeto 👞👞
+#### Passo a passo - Clone ou baixe o projeto  👞👞
 
 1. Abra o terminal do seu editor de código;
 2. Navegue até a pasta onde deseja instalar o projeto;
