@@ -8,6 +8,7 @@
         {
 
             string[] numerosJaDigitados = new string[100];
+            string[] numerosJaSorteados = new string[10];
             int contador = 0;
 
             double pontuacao = 1000;
@@ -47,18 +48,22 @@
                 Console.WriteLine("        Jogo de Adivinhação", "\n");
                 Console.WriteLine($"\nNÍVEL: {nivelDificuldade}", "\n");
                 Console.WriteLine($"HISTÓRICO DE CHUTES: {historicoChutesJoin}", "\t");
+
                 Console.WriteLine($"\nPONTUAÇÃO: {pontuacao}", "\n");
                 Console.WriteLine($"\nTENTATIVAS: {tentativas}", "\n");
                 Console.WriteLine("--------------------------------------");
 
                 Random geradorDeNumeros = new Random();
                 int numeroSorteado = geradorDeNumeros.Next(1, 21);
-                Console.WriteLine($"\n Gabarito: {numeroSorteado}");
+                //Console.WriteLine($"\n Gabarito: {numeroSorteado}");
+                string historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
 
                 Console.Write("Digite um número entre 1 e 20: ", " \n");
                 double numeroDigitadoInput = Convert.ToDouble(Console.ReadLine());
 
                 numerosJaDigitados[contador] = Convert.ToString(numeroDigitadoInput);
+
+                numerosJaSorteados[contador]=Convert.ToString(numeroSorteado);
                 contador++;
 
                 double diferencaDigitadoESorteado = Math.Abs((numeroDigitadoInput - numeroSorteado) / 2);
@@ -67,6 +72,8 @@
                 if (numeroDigitadoInput == numeroSorteado)
                 {
                     historicoChutesJoin = string.Join(", ", numerosJaDigitados.Where(n => n != null));
+                    historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
+
                     Console.Clear();
                     Console.WriteLine("****************************************************");
                     Console.WriteLine($"Parabéns, você acertou! O número sorteado foi {numeroSorteado}!");
@@ -78,6 +85,7 @@
                     Console.WriteLine("        Jogo de Adivinhação", "\n");
                     Console.WriteLine($"\nNÍVEL: {nivelDificuldade}", "\n");
                     Console.WriteLine($"HISTÓRICO DE CHUTES: {historicoChutesJoin}", "\t");
+                    Console.WriteLine($"HISTÓRICO DE SORTEADOS: {historicoSorteadosJoin}", "\t");
                     Console.WriteLine($"\nPONTUAÇÃO FINAL: {pontuacao}", "\n");
                     Console.WriteLine($"\nTENTATIVAS RESTANTES: {tentativas-1}", "\n");
                     Console.WriteLine("**************************************");
@@ -119,12 +127,16 @@
                 if (tentativas == 0)
                 {
                     historicoChutesJoin = string.Join(", ", numerosJaDigitados.Where(n => n != null));
+                    historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
+
                     Console.Clear();
                     Console.WriteLine("-----------------------------------------------------------------------");
                     Console.WriteLine("        Jogo de Adivinhação", "\n");
                     Console.WriteLine($"\nSuas tentativas acabaram! O número sorteado da última rodada foi {numeroSorteado}.");
                     Console.WriteLine($"\nNÍVEL: {nivelDificuldade}", "\n");
                     Console.WriteLine($"HISTÓRICO DE CHUTES: {historicoChutesJoin}", "\t");
+                    Console.WriteLine($"HISTÓRICO DE SORTEADOS: {historicoSorteadosJoin}", "\t");
+
                     Console.WriteLine($"\nPONTUAÇÃO FINAL: {pontuacao}", "\n");
                     Console.WriteLine("-----------------------------------------------------------------------");
 
