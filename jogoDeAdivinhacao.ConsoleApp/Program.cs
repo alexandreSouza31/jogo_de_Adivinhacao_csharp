@@ -55,11 +55,21 @@
 
                 Random geradorDeNumeros = new Random();
                 int numeroSorteado = geradorDeNumeros.Next(1, 21);
-                //Console.WriteLine($"\n Gabarito: {numeroSorteado}");
+                Console.WriteLine($"\n Gabarito: {numeroSorteado}");
                 string historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
 
                 Console.Write("Digite um número entre 1 e 20: ", " \n");
                 double numeroDigitadoInput = Convert.ToDouble(Console.ReadLine());
+
+
+                if (Array.Exists(numerosJaDigitados, n => n == numeroDigitadoInput.ToString()) & numeroDigitadoInput != numeroSorteado)
+                {
+                    Console.WriteLine($"\n{numeroDigitadoInput} já foi digitado é diferente do sorteado!", "\n");
+                    Console.Write("Digite [Enter] para continuar:");
+                    Console.ReadLine();
+                    continue;
+                }
+
 
                 numerosJaDigitados[contador] = Convert.ToString(numeroDigitadoInput);
 
@@ -105,7 +115,7 @@
 
                 }
 
-                if (numeroDigitadoInput < numeroSorteado)
+                else if (numeroDigitadoInput < numeroSorteado)
                 {
                     pontuacao -= diferencaDigitadoESorteado;
 
@@ -160,7 +170,6 @@
 
             }
         }
-
         
     }
 }
