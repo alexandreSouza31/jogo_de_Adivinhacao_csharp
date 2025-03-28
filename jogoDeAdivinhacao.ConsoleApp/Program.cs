@@ -13,10 +13,8 @@
 
             double pontuacao = 1000;
 
-            Console.WriteLine("\n--------------------------------------");
-            Console.WriteLine("        Jogo de Adivinhação", "\n");
-            Console.WriteLine($"\nPONTUAÇÃO: {pontuacao}", "\n");
-            Console.WriteLine("--------------------------------------");
+            exibirCabecalho(pontuacao,tentativas:0);
+
             Console.WriteLine(".........Nível de dificuldade.........", "\n");
             Console.WriteLine("F - Fácil", "\n");
             Console.WriteLine("M - Médio", "\n");
@@ -38,35 +36,28 @@
                 tentativas = 5;
             }
 
+            exibirCabecalho(pontuacao, nivelDificuldade/*,tentativas:metodoDificuldade*/);
+
+
             while (tentativas > 0)
             {
                 string historicoChutesJoin = string.Join(", ", numerosJaDigitados.Where(n => n != null));
 
-                Console.Clear();
-
-                Console.WriteLine("--------------------------------------");
-                Console.WriteLine("        Jogo de Adivinhação", "\n");
-                Console.WriteLine($"\nNÍVEL: {nivelDificuldade}", "\n");
-                Console.WriteLine($"HISTÓRICO DE CHUTES: {historicoChutesJoin}", "\t");
-
-                Console.WriteLine($"\nPONTUAÇÃO: {pontuacao}", "\n");
-                Console.WriteLine($"\nTENTATIVAS: {tentativas}", "\n");
-                Console.WriteLine("--------------------------------------");
 
                 Random geradorDeNumeros = new Random();
                 int numeroSorteado = geradorDeNumeros.Next(1, 21);
                 //Console.WriteLine($"\n Gabarito: {numeroSorteado}");
                 string historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
 
-                Console.Write("Digite um número entre 1 e 20: ", " \n");
+                Console.Write("\nDigite um número entre 1 e 20: ", " \n");
                 double numeroDigitadoInput = Convert.ToDouble(Console.ReadLine());
 
+                exibirCabecalho(pontuacao, nivelDificuldade, historicoChutesJoin, historicoSorteadosJoin, tentativas);
 
                 if (Array.Exists(numerosJaDigitados, n => n == numeroDigitadoInput.ToString()) & numeroDigitadoInput != numeroSorteado)
                 {
                     Console.WriteLine($"\n{numeroDigitadoInput} já foi digitado, e é diferente do sorteado!", "\n");
                     Console.Write("Digite [Enter] para continuar:");
-                    Console.ReadLine();
                     continue;
                 }
 
@@ -89,16 +80,7 @@
                     Console.WriteLine($"Parabéns, você acertou! O número sorteado foi {numeroSorteado}!");
                     Console.WriteLine("****************************************************");
                     Console.ReadLine();
-                    Console.Clear();
-
-                    Console.WriteLine("**************************************");
-                    Console.WriteLine("        Jogo de Adivinhação", "\n");
-                    Console.WriteLine($"\nNÍVEL: {nivelDificuldade}", "\n");
-                    Console.WriteLine($"HISTÓRICO DE CHUTES   : {historicoChutesJoin}", "\t");
-                    Console.WriteLine($"HISTÓRICO DE SORTEADOS: {historicoSorteadosJoin}", "\t");
-                    Console.WriteLine($"\nPONTUAÇÃO FINAL: {pontuacao}", "\n");
-                    Console.WriteLine($"\nTENTATIVAS RESTANTES: {tentativas-1}", "\n");
-                    Console.WriteLine("**************************************");
+                    exibirCabecalho(pontuacao, nivelDificuldade, historicoChutesJoin, historicoSorteadosJoin, tentativas);
 
                     Console.Write("\nDeseja jogar novamente?[S/N]: ");
                     string jogarNovamente = Console.ReadLine().ToUpper();
@@ -112,7 +94,6 @@
                         Console.Clear();
                         break;
                     }
-
                 }
 
                 else if (numeroDigitadoInput < numeroSorteado)
@@ -121,8 +102,7 @@
 
                     tentativas--;
                     Console.WriteLine($"\n{numeroDigitadoInput} é menor que o número sorteado! Perdeu {diferencaDigitadoESorteado} ponto(s).", "\n");
-                    Console.Write("Digite [Enter] para continuar:");
-                    Console.ReadLine();
+
                 }
                 else if (numeroDigitadoInput > numeroSorteado)
                 {
@@ -130,8 +110,7 @@
                     tentativas--;
 
                     Console.WriteLine($"\n{numeroDigitadoInput} é maior que o número sorteado!  Perdeu {diferencaDigitadoESorteado} ponto(s).", "\n");
-                    Console.Write("Digite [Enter] para continuar:");
-                    Console.ReadLine();
+
                 }
 
                 if (tentativas == 0)
@@ -165,11 +144,19 @@
                     }
                 }
 
-
-                Console.Write("Digite [Enter] para continuar:", "\n");
+                Console.Write("\nDigite [Enter] para continuar:", "\n");
 
             }
         }
         
+    }
+    static void exibirCabecalho(double pontuacao, string nivelDificuldade = "", string historicoChutesJoin = "", string historicoSorteadosJoin = "", int tentativas=0)
+    {
+        Console.Clear();
+        Console.WriteLine("--------------------------------------");
+        Console.WriteLine("        Jogo de Adivinhação", "\n");
+        Console.WriteLine($"\nNÍVEL: {nivelDificuldade}\t HISTÓRICO DE CHUTES: {historicoChutesJoin}\t HISTÓRICO DE SORTEADOS: {historicoSorteadosJoin}");
+        Console.WriteLine($"\nPONTUAÇÃO: {pontuacao}\t TENTATIVAS RESTANTES: {tentativas-1}");
+        Console.WriteLine("--------------------------------------");
     }
 }
