@@ -27,7 +27,7 @@
 
                 Random geradorDeNumeros = new Random();
                 int numeroSorteado = geradorDeNumeros.Next(1, 21);
-                Console.WriteLine($"\n Gabarito: {numeroSorteado}");//gabarito
+                //Console.WriteLine($"\n Gabarito: {numeroSorteado}");//gabarito
                 string historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
 
                 Console.Write("\nDigite um número entre 1 e 20: ", " \n");
@@ -83,10 +83,8 @@
     {
         Console.WriteLine(".........Nível de dificuldade.........", "\n");
         Console.WriteLine("F - Fácil", "\n");
-        Console.WriteLine("M - Médio", "\n");
+        Console.WriteLine("M - Médio(padrão)", "\n");
         Console.WriteLine("D - Difícil", "\n");
-
-        Console.WriteLine("padrão - médio", "\n");
 
         int tentativas;
         string nivelDificuldade = Console.ReadLine().ToUpper();
@@ -124,11 +122,9 @@
             }
             else if (jogarNovamente == "N")
             {
-                return false;
+                Environment.Exit(0);
             }
-        
         }
-       
     }
 
     static void exibirVitoriaOuDerrota(double numeroDigitadoInput,int numeroSorteado,string historicoChutesJoin,string historicoSorteadosJoin,
