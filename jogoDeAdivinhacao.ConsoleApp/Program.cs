@@ -38,8 +38,8 @@
                 if (Array.Exists(numerosJaDigitados, n => n == numeroDigitadoInput.ToString()) & numeroDigitadoInput != numeroSorteado)
                 {
                     Console.WriteLine($"\n{numeroDigitadoInput} já foi digitado, e é diferente do sorteado!", "\n");
-                    Console.Write("Digite [Enter] para continuar:");
-                    Console.ReadLine();
+                    
+                    digitarEnterEContinuar();
                     continue;
                 }
 
@@ -57,8 +57,7 @@
                 if(numeroDigitadoInput == numeroSorteado ||tentativas == 0)
                 JogarNovamente();
 
-                Console.Write("\nDigite [Enter] para continuar: ", "\n");
-                Console.ReadLine();
+                digitarEnterEContinuar();
 
                 historicoChutesJoin = string.Join(", ", numerosJaDigitados.Where(n => n != null));
                 historicoSorteadosJoin = string.Join(", ", numerosJaSorteados.Where(n => n != null));
@@ -172,5 +171,11 @@
             Console.WriteLine($"\nSuas tentativas acabaram!  Perdeu {diferencaDigitadoESorteado} ponto(s).");
             Console.WriteLine($"\nPONTUAÇÃO FINAL: {pontuacao}", "\n");
         }
+    }
+
+    static void digitarEnterEContinuar()
+    {
+        Console.Write("\nDigite [Enter] para continuar: ", "\n");
+        Console.ReadLine();
     }
 }
